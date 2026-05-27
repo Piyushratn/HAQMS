@@ -12,7 +12,7 @@ export default function QueueMonitor() {
 
   // FIX: Isolated counter to prevent closure lockup captures
   const countRef = useRef(0);
-  const API_BASE_URL = 'http://localhost:5000/api';
+  const API_BASE_URL = ' https://haqms-backend-6gy8.onrender.com';
 
   const fetchQueueData = async () => {
     try {
