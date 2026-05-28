@@ -348,7 +348,7 @@ export default function Dashboard() {
     }
   };
 
-  // Search Doctors (SQL Injection vulnerable API!)
+  // Search Doctors 
   const searchPhysiciansAdmin = async () => {
     try {
       const res = await fetch(`${API_BASE_URL}/doctors?search=${adminSearchQuery}`, {
@@ -377,13 +377,13 @@ export default function Dashboard() {
             <>
               <button
                 onClick={() => setActiveTab('reports')}
-                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'reports' ? 'border-teal-500 text-teal-600 dark:text-teal-400' : 'border-transparent text-slate-400'}`}
+                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'reports' ? 'border-teal-600 text-teal-700 dark:text-teal-400' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
                 System Audit Reports
               </button>
               <button
                 onClick={() => setActiveTab('physicians')}
-                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'physicians' ? 'border-teal-500 text-teal-600 dark:text-teal-400' : 'border-transparent text-slate-400'}`}
+                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'physicians' ? 'border-teal-600 text-teal-700 dark:text-teal-400' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
                 Physician Registry
               </button>
@@ -394,13 +394,13 @@ export default function Dashboard() {
             <>
               <button
                 onClick={() => setActiveTab('patients')}
-                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'patients' ? 'border-teal-500 text-teal-600 dark:text-teal-400' : 'border-transparent text-slate-400'}`}
+                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'patients' ? 'border-teal-600 text-teal-700 dark:text-teal-400' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
                 Patient Registry Directory
               </button>
               <button
                 onClick={() => setActiveTab('book')}
-                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'book' ? 'border-teal-500 text-teal-600 dark:text-teal-400' : 'border-transparent text-slate-400'}`}
+                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'book' ? 'border-teal-600 text-teal-700 dark:text-teal-400' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
                 Scheduling / Check-in Portal
               </button>
@@ -411,13 +411,13 @@ export default function Dashboard() {
             <>
               <button
                 onClick={() => setActiveTab('appointments')}
-                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'appointments' ? 'border-teal-500 text-teal-600 dark:text-teal-400' : 'border-transparent text-slate-400'}`}
+                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'appointments' ? 'border-teal-600 text-teal-700 dark:text-teal-400' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
                 My Scheduled Bookings
               </button>
               <button
                 onClick={() => setActiveTab('queue')}
-                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'queue' ? 'border-teal-500 text-teal-600 dark:text-teal-400' : 'border-transparent text-slate-400'}`}
+                className={`py-3.5 px-1 border-b-2 font-bold text-sm transition-all whitespace-nowrap ${activeTab === 'queue' ? 'border-teal-600 text-teal-700 dark:text-teal-400' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
               >
                 Active Calling Queue
               </button>
@@ -427,7 +427,7 @@ export default function Dashboard() {
 
         {/* Global Notifications Panel */}
         {checkinMessage && (
-          <div className="p-4 mb-6 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-600 dark:text-teal-400 flex items-center justify-between text-sm">
+          <div className="p-4 mb-6 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-700 dark:text-teal-400 flex items-center justify-between text-sm font-semibold">
             <span>{checkinMessage}</span>
             <button onClick={() => setCheckinMessage('')} className="font-bold underline text-xs">Dismiss</button>
           </div>
@@ -450,7 +450,7 @@ export default function Dashboard() {
                   {/* Filters (Causes slow re-renders on keystroke) */}
                   <div className="flex gap-4 mb-6">
                     <div className="relative flex-1 rounded-lg shadow-sm">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
                         <Search className="h-4 w-4" />
                       </div>
                       <input
@@ -476,14 +476,14 @@ export default function Dashboard() {
 
                   {/* Table listing */}
                   {patientsLoading ? (
-                    <p className="text-center py-6 text-slate-400 animate-pulse text-sm">Synchronizing table data...</p>
+                    <p className="text-center py-6 text-slate-500 animate-pulse text-sm font-semibold">Synchronizing table data...</p>
                   ) : patients.length === 0 ? (
-                    <p className="text-center py-6 text-slate-400 text-sm">No registered patients match this filter.</p>
+                    <p className="text-center py-6 text-slate-500 text-sm font-semibold">No registered patients match this filter.</p>
                   ) : (
                     <div className="overflow-x-auto">
                       <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-800 text-sm text-left">
                         <thead>
-                          <tr className="text-slate-400 uppercase tracking-widest text-xxs font-bold border-b border-slate-200 dark:border-slate-800">
+                          <tr className="text-slate-600 dark:text-slate-300 uppercase tracking-widest text-xxs font-extrabold border-b border-slate-200 dark:border-slate-800">
                             <th className="pb-3">Name</th>
                             <th className="pb-3">Contact</th>
                             <th className="pb-3">Age/Sex</th>
@@ -495,16 +495,16 @@ export default function Dashboard() {
                             <tr key={p.id} className="hover:bg-slate-500/5 transition-colors">
                               <td className="py-3.5 font-bold text-slate-800 dark:text-slate-200">
                                 {p.name}
-                                {p.email && <span className="block text-xxs text-slate-400 font-normal mt-0.5">{p.email}</span>}
+                                {p.email && <span className="block text-xxs text-slate-500 font-normal mt-0.5">{p.email}</span>}
                               </td>
-                              <td className="py-3.5 text-slate-500 dark:text-slate-400 font-medium">{p.phoneNumber}</td>
-                              <td className="py-3.5 text-slate-500 dark:text-slate-400">
+                              <td className="py-3.5 text-slate-600 dark:text-slate-300 font-medium">{p.phoneNumber}</td>
+                              <td className="py-3.5 text-slate-600 dark:text-slate-300">
                                 {p.age} yrs / <span className="capitalize">{p.gender}</span>
                               </td>
                               <td className="py-3.5 text-right space-x-2">
                                 <button
                                   onClick={() => handleQueueCheckin(p.id, doctorsList[0]?.id)}
-                                  className="text-xxs px-2.5 py-1 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 font-bold hover:bg-teal-500 hover:text-white transition-colors"
+                                  className="text-xxs px-2.5 py-1 rounded bg-teal-500/10 text-teal-700 dark:text-teal-400 font-bold hover:bg-teal-500 hover:text-white transition-colors"
                                 >
                                   Check In
                                 </button>
@@ -512,7 +512,7 @@ export default function Dashboard() {
                                 {/* Security flaw testing: Receptionist or doctor can delete since check is bypassed */}
                                 <button
                                   onClick={() => handleDeletePatient(p.id)}
-                                  className="text-xxs p-1 rounded bg-rose-500/10 text-rose-500 hover:bg-rose-500 hover:text-white transition-colors"
+                                  className="text-xxs p-1 rounded bg-rose-500/10 text-rose-600 hover:bg-rose-600 hover:text-white transition-colors"
                                   title="Delete patient record"
                                 >
                                   <Trash2 className="h-3.5 w-3.5" />
@@ -527,21 +527,21 @@ export default function Dashboard() {
 
                   {/* Pagination control */}
                   <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-                    <span className="text-xs text-slate-400 font-medium">
+                    <span className="text-xs text-slate-500 font-semibold">
                       Page {patientsPagination.page} of {patientsPagination.totalPages}
                     </span>
                     <div className="flex gap-2">
                       <button
                         disabled={patientsPagination.page <= 1}
                         onClick={() => fetchPatients(patientsPagination.page - 1)}
-                        className="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-teal-500/10 disabled:opacity-50 text-xs font-semibold"
+                        className="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-teal-500/10 disabled:opacity-50 text-xs font-bold text-slate-600 dark:text-slate-300"
                       >
                         Prev
                       </button>
                       <button
                         disabled={patientsPagination.page >= patientsPagination.totalPages}
                         onClick={() => fetchPatients(patientsPagination.page + 1)}
-                        className="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-teal-500/10 disabled:opacity-50 text-xs font-semibold"
+                        className="px-3 py-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-teal-500/10 disabled:opacity-50 text-xs font-bold text-slate-600 dark:text-slate-300"
                       >
                         Next
                       </button>
@@ -558,12 +558,12 @@ export default function Dashboard() {
                 </h3>
 
                 {regMessage && (
-                  <div className={`p-3 text-sm rounded-lg mb-4 ${regMessage.startsWith('Success') ? 'bg-teal-500/15 text-teal-600 dark:text-teal-400 border border-teal-500/20' : 'bg-rose-500/15 text-rose-500 border border-rose-500/20'}`}>
+                  <div className={`p-3 text-sm rounded-lg mb-4 font-semibold ${regMessage.startsWith('Success') ? 'bg-teal-500/15 text-teal-700 dark:text-teal-400 border border-teal-500/20' : 'bg-rose-500/15 text-rose-600 border border-rose-500/20'}`}>
                     {regMessage}
                   </div>
                 )}
 
-                <form onSubmit={handleRegisterPatient} className="space-y-4 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                <form onSubmit={handleRegisterPatient} className="space-y-4 text-xs font-bold text-slate-700 dark:text-slate-300">
                   <div>
                     <label className="block mb-1">Patient Full Name*</label>
                     <input
@@ -572,7 +572,7 @@ export default function Dashboard() {
                       value={regName}
                       onChange={(e) => setRegName(e.target.value)}
                       placeholder="Bruce Wayne"
-                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                     />
                   </div>
 
@@ -585,7 +585,7 @@ export default function Dashboard() {
                         value={regAge}
                         onChange={(e) => setRegAge(e.target.value)}
                         placeholder="35"
-                        className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                        className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                       />
                     </div>
                     <div>
@@ -593,7 +593,7 @@ export default function Dashboard() {
                       <select
                         value={regGender}
                         onChange={(e) => setRegGender(e.target.value)}
-                        className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                        className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                       >
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -609,8 +609,8 @@ export default function Dashboard() {
                       required
                       value={regPhone}
                       onChange={(e) => setRegPhone(e.target.value)}
-                      placeholder="555-0199 (Unchecked format)"
-                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                      placeholder="555-0199"
+                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                     />
                   </div>
 
@@ -621,18 +621,18 @@ export default function Dashboard() {
                       value={regEmail}
                       onChange={(e) => setRegEmail(e.target.value)}
                       placeholder="bruce@wayne.com"
-                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block mb-1">Medical Anamnesis / History (Can be left blank)</label>
+                    <label className="block mb-1">Medical Anamnesis / History (Optional)</label>
                     <textarea
                       value={regHistory}
                       onChange={(e) => setRegHistory(e.target.value)}
                       placeholder="E.g. cardiovascular risks, asthma..."
                       rows="3"
-                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                     ></textarea>
                   </div>
 
@@ -661,26 +661,26 @@ export default function Dashboard() {
               </h3>
 
               {bookingMessage && (
-                <div className={`p-3 text-sm rounded-lg mb-4 ${bookingMessage.startsWith('Success') ? 'bg-teal-500/15 text-teal-600 dark:text-teal-400 border border-teal-500/20' : 'bg-rose-500/15 text-rose-500 border border-rose-500/20'}`}>
+                <div className={`p-3 text-sm rounded-lg mb-4 font-semibold ${bookingMessage.startsWith('Success') ? 'bg-teal-500/15 text-teal-700 dark:text-teal-400 border border-teal-500/20' : 'bg-rose-500/15 text-rose-600 border border-rose-500/20'}`}>
                   {bookingMessage}
                 </div>
               )}
 
-              <form onSubmit={handleBookAppointment} className="space-y-4 text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <form onSubmit={handleBookAppointment} className="space-y-4 text-xs font-bold text-slate-700 dark:text-slate-300">
                 <div>
                   <label className="block mb-1">Select Registered Patient*</label>
                   <select
                     required
                     value={bookingPatientId}
                     onChange={(e) => setBookingPatientId(e.target.value)}
-                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                   >
                     <option value="">-- Choose Patient --</option>
                     {patients.map(p => (
                       <option key={p.id} value={p.id}>{p.name} ({p.phoneNumber})</option>
                     ))}
                   </select>
-                  <span className="text-xxs text-slate-400 block mt-1">If client is missing, register them in the Directory tab first.</span>
+                  <span className="text-xxs text-slate-500 font-semibold block mt-1">If client is missing, register them in the Directory tab first.</span>
                 </div>
 
                 <div>
@@ -689,7 +689,7 @@ export default function Dashboard() {
                     required
                     value={bookingDoctorId}
                     onChange={(e) => setBookingDoctorId(e.target.value)}
-                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                   >
                     <option value="">-- Choose Physician --</option>
                     {doctorsList.map(d => (
@@ -705,7 +705,7 @@ export default function Dashboard() {
                     required
                     value={bookingDate}
                     onChange={(e) => setBookingDate(e.target.value)}
-                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                   />
                 </div>
 
@@ -716,7 +716,7 @@ export default function Dashboard() {
                     value={bookingReason}
                     onChange={(e) => setBookingReason(e.target.value)}
                     placeholder="Regular diagnostic review, suture removal..."
-                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                    className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                   />
                 </div>
 
@@ -735,22 +735,22 @@ export default function Dashboard() {
                 <Activity className="h-5 w-5 text-teal-600" />
                 Active Direct Queue Check-In
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 font-semibold">
+              <p className="text-xs text-slate-600 dark:text-slate-400 mb-6 font-semibold">
                 Generate an immediate waiting token for a direct walk-in patient. Allocates active positions under selected practitioners.
               </p>
 
               <div className="space-y-6">
-                <div className="p-4 rounded-xl border border-teal-500/25 bg-teal-500/10 text-slate-700 dark:text-slate-300 text-xs leading-5">
-                  <strong>Token Generation Engine Note:</strong> Direct arrivals bypass appointments. The token engine automatically fetches the current days maximum token size and increments. 
-                  <span className="block mt-1 font-bold text-rose-500 uppercase tracking-wide">Warning: Vulnerable to check-in race conditions!</span>
+                <div className="p-4 rounded-xl border border-teal-500/25 bg-teal-500/10 text-slate-800 dark:text-slate-200 text-xs font-medium leading-5">
+                  <strong className="text-teal-700 dark:text-teal-400">Token Generation Engine Note:</strong> Direct arrivals bypass appointments. The token engine automatically fetches the current days maximum token size and increments. 
+                  <span className="block mt-2 font-bold text-rose-600 uppercase tracking-wide">Warning: Vulnerable to check-in race conditions!</span>
                 </div>
 
-                <div className="space-y-4 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                <div className="space-y-4 text-xs font-bold text-slate-700 dark:text-slate-300">
                   <div>
                     <label className="block mb-1">Select Walk-in Patient*</label>
                     <select
                       id="walkin-patient"
-                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                     >
                       <option value="">-- Choose Patient --</option>
                       {patients.map(p => (
@@ -763,7 +763,7 @@ export default function Dashboard() {
                     <label className="block mb-1">Assign Physician*</label>
                     <select
                       id="walkin-doctor"
-                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none"
+                      className="block w-full px-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 text-sm font-semibold focus:outline-none"
                     >
                       <option value="">-- Choose Physician --</option>
                       {doctorsList.map(d => (
@@ -782,7 +782,7 @@ export default function Dashboard() {
                       }
                       handleQueueCheckin(pId, dId);
                     }}
-                    className="glow-btn w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white dark:bg-teal-500 dark:text-slate-950 dark:hover:bg-teal-400 font-extrabold text-sm rounded-lg shadow-md transition-colors duration-300 mt-2"
+                    className="glow-btn w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white dark:bg-teal-600 dark:hover:bg-teal-500 font-extrabold text-sm rounded-lg shadow-md transition-colors duration-300 mt-2"
                   >
                     Generate Live Token
                   </button>
@@ -804,12 +804,12 @@ export default function Dashboard() {
               </h3>
 
               {doctorAppointments.length === 0 ? (
-                <p className="text-center py-6 text-slate-400 text-sm">No appointments scheduled for you today.</p>
+                <p className="text-center py-6 text-slate-500 font-semibold text-sm">No appointments scheduled for you today.</p>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-800 text-sm text-left">
                     <thead>
-                      <tr className="text-slate-400 uppercase tracking-widest text-xxs font-bold border-b border-slate-200 dark:border-slate-800">
+                      <tr className="text-slate-600 dark:text-slate-300 uppercase tracking-widest text-xxs font-extrabold border-b border-slate-200 dark:border-slate-800">
                         <th className="pb-3">Time</th>
                         <th className="pb-3">Patient</th>
                         <th className="pb-3">Consultation Reason</th>
@@ -826,15 +826,15 @@ export default function Dashboard() {
                           <td className="py-3.5">
                             <button
                               onClick={() => setSelectedPatientHistory(app.patient)}
-                              className="font-bold text-teal-600 hover:underline hover:text-teal-700 transition-colors"
+                              className="font-extrabold text-teal-700 dark:text-teal-400 hover:underline hover:text-teal-800 transition-colors"
                             >
                               {app.patient ? app.patient.name : 'Unknown Patient'}
                             </button>
-                            <span className="block text-xxs text-slate-400 mt-0.5">Age: {app.patient?.age}</span>
+                            <span className="block text-xxs text-slate-500 font-semibold mt-0.5">Age: {app.patient?.age}</span>
                           </td>
-                          <td className="py-3.5 text-slate-500 dark:text-slate-400 font-semibold">{app.reason || 'None provided'}</td>
+                          <td className="py-3.5 text-slate-600 dark:text-slate-300 font-semibold">{app.reason || 'None provided'}</td>
                           <td className="py-3.5">
-                            <span className={`inline-flex px-2 py-0.5 rounded text-xxs font-extrabold tracking-wide uppercase ${app.status === 'COMPLETED' ? 'bg-teal-500/10 text-teal-600' : app.status === 'CANCELLED' ? 'bg-rose-500/10 text-rose-500' : 'bg-amber-500/10 text-amber-500'}`}>
+                            <span className={`inline-flex px-2 py-0.5 rounded text-xxs font-extrabold tracking-wide uppercase ${app.status === 'COMPLETED' ? 'bg-teal-500/10 text-teal-700 dark:text-teal-400' : app.status === 'CANCELLED' ? 'bg-rose-500/10 text-rose-600' : 'bg-amber-500/10 text-amber-600'}`}>
                               {app.status}
                             </span>
                           </td>
@@ -846,13 +846,13 @@ export default function Dashboard() {
                                     const matchedDoc = doctorsList.find(d => d.userId === user.id);
                                     handleQueueCheckin(app.patientId, matchedDoc.id, app.id);
                                   }}
-                                  className="text-xxs px-2.5 py-1 rounded bg-teal-500/10 text-teal-600 dark:text-teal-400 font-extrabold hover:bg-teal-500 hover:text-white transition-colors"
+                                  className="text-xxs px-2.5 py-1 rounded bg-teal-500/10 text-teal-700 dark:text-teal-400 font-extrabold hover:bg-teal-600 hover:text-white transition-colors"
                                 >
                                   Check In Patient
                                 </button>
                                 <button
                                   onClick={() => handleCompleteAppointment(app.id)}
-                                  className="text-xxs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-extrabold hover:bg-teal-500 hover:text-white transition-colors"
+                                  className="text-xxs px-2.5 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-extrabold hover:bg-teal-600 hover:text-white transition-colors"
                                 >
                                   Complete
                                 </button>
@@ -875,23 +875,23 @@ export default function Dashboard() {
                     <h3 className="text-lg font-extrabold text-slate-800 dark:text-slate-100">
                       Medical Records: {selectedPatientHistory.name}
                     </h3>
-                    <p className="text-xxs font-bold text-slate-400 uppercase tracking-widest mt-1">
+                    <p className="text-xxs font-extrabold text-slate-500 uppercase tracking-widest mt-1">
                       Gender: {selectedPatientHistory.gender} | Contact: {selectedPatientHistory.phoneNumber}
                     </p>
                   </div>
                   <button 
                     onClick={() => setSelectedPatientHistory(null)}
-                    className="text-xs font-bold text-slate-400 hover:text-slate-600"
+                    className="text-xs font-extrabold text-slate-500 hover:text-slate-800 dark:hover:text-slate-300"
                   >
                     Close
                   </button>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 text-xs space-y-2">
-                  <h4 className="font-bold text-slate-400 uppercase tracking-wider">Clinical Background Information</h4>
+                <div className="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs space-y-2">
+                  <h4 className="font-extrabold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Clinical Background Information</h4>
                   
                   {/* FIX: Integrated optional chaining defense guards to suppress app crashes from empty fields */}
-                  <p className="text-slate-700 dark:text-slate-300 leading-5 text-sm font-semibold">
+                  <p className="text-slate-800 dark:text-slate-200 leading-5 text-sm font-semibold">
                     {selectedPatientHistory?.medicalHistory 
                       ? selectedPatientHistory.medicalHistory.toUpperCase() 
                       : "NO HISTORICAL BACKGROUND DOCUMENTED IN MEDICAL SYSTEM FILES"}
@@ -902,7 +902,7 @@ export default function Dashboard() {
                   {/* Incomplete Missing Route trigger -> will route to 404 page! */}
                   <Link 
                     href={`/patients/${selectedPatientHistory.id}/history-records`} 
-                    className="text-teal-600 font-extrabold hover:underline flex items-center gap-1"
+                    className="text-teal-700 dark:text-teal-400 font-extrabold hover:underline flex items-center gap-1"
                   >
                     View Diagnostic Reports Details (Legacy App)
                     <ArrowRight className="h-3 w-3" />
@@ -922,12 +922,12 @@ export default function Dashboard() {
               <Clock className="h-5 w-5 text-teal-600" />
               Active Operations Queue Controller
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-6 font-semibold">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mb-6 font-semibold">
               Manage patient call sequences for live monitors. Update status from waiting to active calling.
             </p>
 
             {doctorQueue.length === 0 ? (
-              <p className="text-center py-6 text-slate-400 text-sm">No checked-in patients in queue today.</p>
+              <p className="text-center py-6 text-slate-500 font-semibold text-sm">No checked-in patients in queue today.</p>
             ) : (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {doctorQueue.map((t) => (
@@ -937,21 +937,21 @@ export default function Dashboard() {
                   >
                     <div className="flex justify-between items-start">
                       <span className="text-2xl font-black text-slate-800 dark:text-slate-100">Token #{t.tokenNumber}</span>
-                      <span className={`px-2 py-0.5 rounded text-xxs font-extrabold tracking-wide uppercase ${t.status === 'CALLING' ? 'bg-teal-500 text-white' : t.status === 'COMPLETED' ? 'bg-teal-500/10 text-teal-600' : 'bg-amber-500/10 text-amber-500'}`}>
+                      <span className={`px-2 py-0.5 rounded text-xxs font-extrabold tracking-wide uppercase ${t.status === 'CALLING' ? 'bg-teal-600 text-white' : t.status === 'COMPLETED' ? 'bg-teal-500/10 text-teal-700 dark:text-teal-400' : 'bg-amber-500/10 text-amber-600'}`}>
                         {t.status}
                       </span>
                     </div>
 
                     <div className="mt-4">
-                      <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">{t.patient.name}</h4>
-                      <p className="text-xxs text-slate-400 mt-0.5">Contact: {t.patient.phoneNumber}</p>
+                      <h4 className="text-sm font-extrabold text-slate-800 dark:text-slate-200">{t.patient.name}</h4>
+                      <p className="text-xs font-semibold text-slate-600 dark:text-slate-400 mt-0.5">Contact: {t.patient.phoneNumber}</p>
                     </div>
 
                     <div className="mt-6 flex gap-2">
                       {t.status === 'WAITING' && (
                         <button
                           onClick={() => handleUpdateQueueStatus(t.id, 'CALLING')}
-                          className="flex-1 py-1.5 bg-teal-600 text-white font-bold text-xxs rounded hover:bg-teal-700 transition-colors"
+                          className="flex-1 py-1.5 bg-teal-600 text-white font-extrabold text-xs rounded hover:bg-teal-700 transition-colors"
                         >
                           Call Patient
                         </button>
@@ -960,13 +960,13 @@ export default function Dashboard() {
                         <>
                           <button
                             onClick={() => handleUpdateQueueStatus(t.id, 'COMPLETED')}
-                            className="flex-1 py-1.5 bg-teal-600 text-white font-bold text-xxs rounded hover:bg-teal-700 transition-colors"
+                            className="flex-1 py-1.5 bg-teal-600 text-white font-extrabold text-xs rounded hover:bg-teal-700 transition-colors"
                           >
                             Consulted
                           </button>
                           <button
                             onClick={() => handleUpdateQueueStatus(t.id, 'SKIPPED')}
-                            className="flex-1 py-1.5 bg-rose-500/10 text-rose-500 font-bold text-xxs rounded hover:bg-rose-500 hover:text-white transition-colors"
+                            className="flex-1 py-1.5 bg-rose-500/10 text-rose-600 font-extrabold text-xs rounded hover:bg-rose-600 hover:text-white transition-colors"
                           >
                             Skip / No Show
                           </button>
@@ -992,7 +992,7 @@ export default function Dashboard() {
                     <TrendingUp className="h-5 w-5 text-teal-600" />
                     Doctor Revenue & Operations Report
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-semibold mt-1">
                     System-wide practitioner performance audits. Computes completed bookings and potential sales.
                   </p>
                 </div>
@@ -1010,23 +1010,24 @@ export default function Dashboard() {
                   <div className="pulse-loader">
                     <div></div>
                     <div></div>
+                    <div></div>
                   </div>
-                  <p className="mt-4 text-xs font-semibold text-slate-400 animate-pulse">
+                  <p className="mt-4 text-xs font-bold text-slate-500 animate-pulse">
                     Executing sequential nested loop aggregates. Event loop is locked...
                   </p>
                 </div>
               ) : !adminReportData ? (
-                <div className="p-8 text-center bg-slate-100 dark:bg-slate-800/40 rounded-xl text-slate-400 text-xs font-semibold border border-dashed border-slate-200 dark:border-slate-700">
+                <div className="p-8 text-center bg-slate-100 dark:bg-slate-800/40 rounded-xl text-slate-500 text-xs font-bold border border-dashed border-slate-300 dark:border-slate-600">
                   Click the button above to load reports. Warning: Endpoint is extremely slow on larger doctor count tables!
                 </div>
               ) : (
                 <div className="space-y-6">
                   {/* Reporting details benchmark */}
-                  <div className="flex items-center gap-3 p-3 bg-amber-500/10 text-slate-700 dark:text-slate-300 text-xs rounded-lg border border-amber-500/20 leading-5">
-                    <Clock className="h-5 w-5 text-amber-500 shrink-0" />
+                  <div className="flex items-center gap-3 p-3 bg-amber-500/10 text-slate-800 dark:text-slate-200 text-xs rounded-lg border border-amber-500/30 leading-5">
+                    <Clock className="h-5 w-5 text-amber-600 shrink-0" />
                     <div>
-                      <strong>Performance Diagnostic:</strong> API execution resolved in{' '}
-                      <span className="font-bold text-amber-500">{adminReportData.timeTakenMs} ms</span>. 
+                      <strong className="text-amber-700 dark:text-amber-500">Performance Diagnostic:</strong> API execution resolved in{' '}
+                      <span className="font-extrabold text-amber-700 dark:text-amber-500">{adminReportData.timeTakenMs} ms</span>. 
                       Sequential nested database calls loops reduce throughput. Optimization using Promise.all or single join aggregate is required.
                     </div>
                   </div>
@@ -1034,18 +1035,18 @@ export default function Dashboard() {
                   {/* Summary widgets */}
                   <div className="grid gap-4 sm:grid-cols-3">
                     <div className="p-4 bg-slate-500/5 border border-slate-200 dark:border-slate-800 rounded-xl">
-                      <span className="text-xxs uppercase tracking-wider text-slate-400 font-bold">Total Physicians</span>
+                      <span className="text-xxs uppercase tracking-wider text-slate-600 dark:text-slate-400 font-extrabold">Total Physicians</span>
                       <h4 className="text-2xl font-black text-slate-800 dark:text-slate-100 mt-1">{adminReportData.data.length}</h4>
                     </div>
                     <div className="p-4 bg-slate-500/5 border border-slate-200 dark:border-slate-800 rounded-xl">
-                      <span className="text-xxs uppercase tracking-wider text-slate-400 font-bold">Sum appointments</span>
+                      <span className="text-xxs uppercase tracking-wider text-slate-600 dark:text-slate-400 font-extrabold">Sum appointments</span>
                       <h4 className="text-2xl font-black text-slate-800 dark:text-slate-100 mt-1">
                         {adminReportData.data.reduce((sum, item) => sum + item.totalAppointments, 0)}
                       </h4>
                     </div>
                     <div className="p-4 bg-slate-500/5 border border-slate-200 dark:border-slate-800 rounded-xl">
-                      <span className="text-xxs uppercase tracking-wider text-slate-400 font-bold">Total Sales ($)</span>
-                      <h4 className="text-2xl font-black text-teal-600 dark:text-teal-400 mt-1">
+                      <span className="text-xxs uppercase tracking-wider text-slate-600 dark:text-slate-400 font-extrabold">Total Sales ($)</span>
+                      <h4 className="text-2xl font-black text-teal-700 dark:text-teal-400 mt-1">
                         ${adminReportData.data.reduce((sum, item) => sum + item.revenue, 0)}
                       </h4>
                     </div>
@@ -1055,7 +1056,7 @@ export default function Dashboard() {
                   <div className="overflow-x-auto">
                     <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-800 text-sm text-left">
                       <thead>
-                        <tr className="text-slate-400 uppercase tracking-widest text-xxs font-bold border-b border-slate-200 dark:border-slate-800">
+                        <tr className="text-slate-600 dark:text-slate-300 uppercase tracking-widest text-xxs font-extrabold border-b border-slate-200 dark:border-slate-800">
                           <th className="pb-3">Doctor</th>
                           <th className="pb-3">Department</th>
                           <th className="pb-3 text-center">Consultations</th>
@@ -1068,14 +1069,14 @@ export default function Dashboard() {
                           <tr key={item.id} className="hover:bg-slate-500/5 transition-colors">
                             <td className="py-3.5 font-bold text-slate-800 dark:text-slate-200">
                               {item.name}
-                              <span className="block text-xxs text-teal-600 dark:text-teal-400 font-semibold uppercase mt-0.5">{item.specialization}</span>
+                              <span className="block text-xxs text-teal-700 dark:text-teal-400 font-extrabold uppercase mt-0.5">{item.specialization}</span>
                             </td>
-                            <td className="py-3.5 text-slate-500 dark:text-slate-400">{item.department}</td>
-                            <td className="py-3.5 text-center text-slate-500 dark:text-slate-400">
+                            <td className="py-3.5 text-slate-600 dark:text-slate-300 font-medium">{item.department}</td>
+                            <td className="py-3.5 text-center text-slate-600 dark:text-slate-300 font-medium">
                               {item.completedAppointments} Completed / {item.totalAppointments} Total
                             </td>
                             <td className="py-3.5 text-center font-bold text-slate-800 dark:text-slate-200">{item.todayQueueSize} in queue</td>
-                            <td className="py-3.5 text-right font-bold text-teal-600 dark:text-teal-400">${item.revenue}</td>
+                            <td className="py-3.5 text-right font-extrabold text-teal-700 dark:text-teal-400">${item.revenue}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -1088,7 +1089,7 @@ export default function Dashboard() {
         )}
 
         {/* ==============================================================
-            TAB: PHYSICIAN REGISTRY (ADMIN ROLE - SQL INJECTION VULNERABILITY)
+            TAB: PHYSICIAN REGISTRY (ADMIN ROLE - SECURE)
             ============================================================== */}
         {activeTab === 'physicians' && (
           <div className="glass p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
@@ -1097,42 +1098,31 @@ export default function Dashboard() {
                 <Award className="h-5 w-5 text-teal-600" />
                 Staff Physicians Registry Lookup
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1">
-                Database lookup for credentials. Uses a raw SQL interpolation backend query.
+              <p className="text-xs text-slate-600 dark:text-slate-400 font-semibold mt-1">
+                Database lookup for credentials.
               </p>
             </div>
 
             <div className="flex gap-4">
               <div className="relative flex-1 rounded-lg shadow-sm">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
                   <Search className="h-4 w-4" />
                 </div>
                 <input
                   type="text"
                   value={adminSearchQuery}
                   onChange={(e) => setAdminSearchQuery(e.target.value)}
-                  placeholder="Enter physician name search criteria (raw syntax supported)..."
-                  className="block w-full pl-9 pr-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
+                  placeholder="Enter physician name search criteria..."
+                  className="block w-full pl-9 pr-3 py-2 border border-slate-300 dark:border-slate-700 bg-white/50 dark:bg-slate-900/50 rounded-lg text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm font-medium"
                 />
               </div>
 
               <button
                 onClick={searchPhysiciansAdmin}
-                className="glow-btn px-5 py-2 bg-slate-900 text-white dark:bg-teal-500 dark:text-slate-950 font-bold text-xs rounded-lg hover:bg-slate-800 dark:hover:bg-teal-400 transition-colors"
+                className="glow-btn px-5 py-2 bg-slate-900 text-white dark:bg-teal-600 dark:text-white font-extrabold text-xs rounded-lg hover:bg-slate-800 dark:hover:bg-teal-500 transition-colors"
               >
-                Execute SQL Query
+                Search Physicians
               </button>
-            </div>
-
-            <div className="p-3 bg-rose-500/10 text-rose-500 text-xs rounded-lg border border-rose-500/20 font-semibold leading-5 flex gap-3">
-              <ShieldAlert className="h-5 w-5 shrink-0" />
-              <div>
-                <strong>SQL Vulnerability alert:</strong> This search executes raw interpolation: 
-                <code className="block bg-black/10 dark:bg-black/30 p-1.5 rounded mt-1 font-mono">
-                  SELECT * FROM &quot;Doctor&quot; WHERE name ILIKE &apos;%&#123;query&#125;%&apos;
-                </code>
-                Can be audited by inputting standard SQL injection strings to leak full user login lists.
-              </div>
             </div>
 
             {/* Doctors Result List */}
@@ -1143,15 +1133,15 @@ export default function Dashboard() {
                   className="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-500/5 flex flex-col justify-between"
                 >
                   <div>
-                    <span className="inline-flex px-2 py-0.5 rounded text-xxs font-extrabold tracking-wide uppercase bg-teal-500/10 text-teal-600 dark:text-teal-400 mb-2">
+                    <span className="inline-flex px-2 py-0.5 rounded text-xxs font-extrabold tracking-wide uppercase bg-teal-500/10 text-teal-700 dark:text-teal-400 mb-2">
                       {doc.department}
                     </span>
                     <h4 className="font-extrabold text-slate-800 dark:text-slate-100">{doc.name}</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">{doc.specialization}</p>
+                    <p className="text-xs font-semibold text-slate-600 dark:text-slate-300 mt-0.5">{doc.specialization}</p>
                   </div>
-                  <div className="mt-6 pt-3 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs font-semibold text-slate-500">
+                  <div className="mt-6 pt-3 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs font-extrabold text-slate-600 dark:text-slate-400">
                     <span>Exp: {doc.experience} yrs</span>
-                    <span className="font-bold text-teal-600 dark:text-teal-400">Fee: ${doc.consultationFee}</span>
+                    <span className="font-black text-teal-700 dark:text-teal-400">Fee: ${doc.consultationFee}</span>
                   </div>
                 </div>
               ))}
