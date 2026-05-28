@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   // HARDCODED API VALUE: Intentionally hardcoding the backend base URL on the frontend!
   // This violates production standards and prevents simple domain config, but serves as
   // a perfect exercise for internship candidates to move to environment variables.
-  const API_BASE_URL = ' https://haqms-backend-6gy8.onrender.com';
+  const API_BASE_URL = ' https://haqms-backend-6gy8.onrender.com/api';
 
   useEffect(() => {
     // Check for stored token and user on initialization
